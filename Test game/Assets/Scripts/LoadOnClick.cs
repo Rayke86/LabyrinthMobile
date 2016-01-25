@@ -23,6 +23,6 @@ public class LoadOnClick : MonoBehaviour {
     
     public void LoadLevel() {
         Debug.Log("button pushed");
-        Application.LoadLevel("Test Game2");
+        Application.LoadLevel("Game");
     }
 }
