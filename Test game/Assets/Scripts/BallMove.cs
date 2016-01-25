@@ -49,7 +49,7 @@ public class BallMove : MonoBehaviour {
                 Debug.Log("Black hole");
                 Application.LoadLevel(0);
                 break;
-            case "finish":
+            case "Finish":
                 Debug.Log("YOU WON!!!");
                 rigidbody.constraints = RigidbodyConstraints.FreezeAll;
                 finished = true;
