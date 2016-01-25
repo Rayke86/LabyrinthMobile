@@ -58,7 +58,11 @@ public class BallMove : MonoBehaviour {
         {
             case "hole":
                 Debug.Log("Black hole");
-                Application.LoadLevel(0);
+                transform.position = new Vector3(9.14f, 0.780f, -8.72f);
+                rigidbody.isKinematic = true;
+                rigidbody.velocity = Vector3.zero;
+                rigidbody.isKinematic = false;
+                
                 break;
             case "Finish":
                 Debug.Log("YOU WON!!!");
