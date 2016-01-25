@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BallMove.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\LoadOnClick.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
     <Compile Include="Assets\TestScript.cs" />
     <Compile Include="Assets\TextOverlay.cs" />

@@ -62,7 +62,6 @@ public class BallMove : MonoBehaviour {
                 break;
             case "Finish":
                 Debug.Log("YOU WON!!!");
-                rigidbody.constraints = RigidbodyConstraints.FreezeAll;
                 finished = true;
                 int hours = (int)time / 3600;
                 int minutes = (int)time / 60 ;
