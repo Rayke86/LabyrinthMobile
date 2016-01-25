@@ -72,10 +72,10 @@
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\LoadOnClick.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
-    <Compile Include="Assets\TextOverlay.cs" />
+    <Compile Include="Assets\Scripts\TextOverlay.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Wood texture floor_01\readme.txt" />
+    <None Include="Assets\Materials\Wood texture floor_01\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
