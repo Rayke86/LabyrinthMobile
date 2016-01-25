@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class BallMove : MonoBehaviour {
+public class BallMove : MonoBehaviour
+{
 
     public float speed;
     private Rigidbody rigidbody;
+    private Vector3 start;
     private bool finished;
     public TextMesh text;
 
@@ -15,29 +16,23 @@ public class BallMove : MonoBehaviour {
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        start = rigidbody.position;
         finished = false;
         speed = 20.0f;
 
-        
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-
-        int hours = (int)time / 3600;
-        int minutes = (int)time / 60;
-        int seconds = (int)time % 60;
-        text.text = "High Score: \n Time: " + hours + ":" + minutes + ":" + seconds;
+        text.text = "High Score: \n Time: "+ getTime();
 
     }
 
 
     void FixedUpdate()
     {
-        
 
         if (!finished)
         {
@@ -58,27 +53,46 @@ public class BallMove : MonoBehaviour {
         {
             case "hole":
                 Debug.Log("Black hole");
-                Application.LoadLevel(0);
+                rigidbody.position = start;
                 break;
             case "Finish":
                 Debug.Log("YOU WON!!!");
                 finished = true;
-                int hours = (int)time / 3600;
-                int minutes = (int)time / 60 ;
-                int seconds = (int)time % 60;
-                text.text = "High Score: \n Time: " +  hours + ":" + minutes + ":" + seconds;
+                text.text = "High Score: \n Time: " + getTime();
+                PlayerPrefs.SetString("score", getTime());
+                Application.LoadLevel(0);
                 break;
         }
     }
 
-    /*void FixedUpdate()
+    private string getTime()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        string timeAsString = "00:00:00";
+        string h = "00";
+        string m = "00";
+        string s = "00";
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        body.AddForce(movement * speed);
+        int hours = (int)time / 3600;
+        if(hours < 10){
+            h = "0" + hours;
+        }
+        else { h = hours + ""; }
 
-    }*/
+        int minutes = (int)time / 60;
+        if (minutes < 10){
+            m = "0" + minutes;
+        }
+        else { m = minutes + ""; }
+
+        int seconds = (int)time % 60;
+        if (seconds < 10){
+            s = "0" + seconds;
+        }
+        else { s = seconds + ""; }
+
+        timeAsString = h + ":" + m + ":" + s;
+        
+        return timeAsString;
+    }
 }
