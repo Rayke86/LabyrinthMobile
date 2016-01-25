@@ -13,6 +13,7 @@ public class BallMove : MonoBehaviour {
         rigidbody = GetComponent<Rigidbody>();
         finished = false;
         speed = 20.0f;
+        
     }
 
     // Update is called once per frame
@@ -25,8 +26,29 @@ public class BallMove : MonoBehaviour {
     {
         if (!finished)
         {
-            Vector3 movement = new Vector3(Input.acceleration.x, 0.0f, -Input.acceleration.z);
+            float x = Input.acceleration.x;
+            float y = Input.acceleration.y;
+            float z = -Input.acceleration.z;
+
+
+            Vector3 movement = new Vector3(x, 0.0f, y);
             rigidbody.AddForce(movement * speed);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "hole":
+                Debug.Log("Black hole");
+                Application.LoadLevel(0);
+                break;
+            case "finish":
+                Debug.Log("YOU WON!!!");
+                rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+                finished = true;
+                break;
         }
     }
 
