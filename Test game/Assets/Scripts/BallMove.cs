@@ -7,6 +7,7 @@ public class BallMove : MonoBehaviour {
     private Rigidbody rigidbody;
     private bool finished;
 
+
     // Use this for initialization
     void Start()
     {
@@ -22,8 +23,11 @@ public class BallMove : MonoBehaviour {
 
     }
 
+
     void FixedUpdate()
     {
+
+
         if (!finished)
         {
             float x = Input.acceleration.x;
@@ -33,6 +37,7 @@ public class BallMove : MonoBehaviour {
 
             Vector3 movement = new Vector3(x, 0.0f, y);
             rigidbody.AddForce(movement * speed);
+
         }
     }
 
