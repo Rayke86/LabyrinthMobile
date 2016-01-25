@@ -6,6 +6,9 @@ public class BallMove : MonoBehaviour {
     public float speed;
     private Rigidbody rigidbody;
     private bool finished;
+    public TextMesh text;
+
+    private float time;
 
 
     // Use this for initialization
@@ -14,19 +17,27 @@ public class BallMove : MonoBehaviour {
         rigidbody = GetComponent<Rigidbody>();
         finished = false;
         speed = 20.0f;
+
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+
+        int hours = (int)time / 3600;
+        int minutes = (int)time / 60;
+        int seconds = (int)time % 60;
+        text.text = "High Score: \n Time: " + hours + ":" + minutes + ":" + seconds;
 
     }
 
 
     void FixedUpdate()
     {
-
+        
 
         if (!finished)
         {
@@ -53,6 +64,10 @@ public class BallMove : MonoBehaviour {
                 Debug.Log("YOU WON!!!");
                 rigidbody.constraints = RigidbodyConstraints.FreezeAll;
                 finished = true;
+                int hours = (int)time / 3600;
+                int minutes = (int)time / 60 ;
+                int seconds = (int)time % 60;
+                text.text = "High Score: \n Time: " +  hours + ":" + minutes + ":" + seconds;
                 break;
         }
     }
